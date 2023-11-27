@@ -10,7 +10,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
   const { replace } = useRouter();
   const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams);
-    // params.set('page', '1');
+    params.set('page', '1');
     if (term) {
       params.set('search', term);
     } else {
@@ -19,10 +19,8 @@ export default function Search({ placeholder }: { placeholder: string }) {
     replace(pathname + '?' + params.toString());
     console.log(pathname + '?' + params.toString());
   }, 300);
-  // console.log(searchParams.get('query'));
-  // console.log(searchParams.get('page'));
-  // console.log(searchParams.get('search'));
-  // console.log(pathname);
+
+  console.log(searchParams.get('query')?.toString());
 
   return (
     <div className="relative flex flex-1 flex-shrink-0">
